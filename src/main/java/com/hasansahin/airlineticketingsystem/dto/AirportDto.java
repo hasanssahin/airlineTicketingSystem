@@ -13,6 +13,7 @@ import lombok.Setter;
 @NotBlank
 public class AirportDto {
 	private String name;
+	private String country;
 	private String city;
 	private String iataCode;
 }
