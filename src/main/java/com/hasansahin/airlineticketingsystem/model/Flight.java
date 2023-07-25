@@ -30,10 +30,11 @@ public class Flight {
 	@OneToOne
 	private Route route;
 
-	public Flight(Date departureDate, Date arrivalDate, Double price) {
+	public Flight(Date departureDate, Date arrivalDate, Double price, Integer quota) {
 		this.departureDate = departureDate;
 		this.arrivalDate = arrivalDate;
 		this.price = price;
+		this.quota = quota;
 		this.uuid = UUID.randomUUID().toString();
 	}
 }
