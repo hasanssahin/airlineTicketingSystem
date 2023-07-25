@@ -33,6 +33,6 @@ public class Flight {
 		this.departureDate = departureDate;
 		this.arrivalDate = arrivalDate;
 		this.price = price;
-		this.uuid= UUID.randomUUID().toString();
+		this.uuid = UUID.randomUUID().toString();
 	}
 }

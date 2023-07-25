@@ -21,6 +21,7 @@ public class Airport {
 	private String country;
 	private String city;
 	private String iataCode;
+
 	public Airport(String name, String country, String city, String iataCode) {
 		this.name = name;
 		this.country = country;

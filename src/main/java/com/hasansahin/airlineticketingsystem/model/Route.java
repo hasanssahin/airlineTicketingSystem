@@ -28,6 +28,6 @@ public class Route {
 
 	public Route(String routeName) {
 		this.routeName = routeName;
-		this.uuid= UUID.randomUUID().toString();
+		this.uuid = UUID.randomUUID().toString();
 	}
 }

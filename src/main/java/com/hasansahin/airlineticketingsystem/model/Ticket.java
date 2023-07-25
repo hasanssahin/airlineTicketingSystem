@@ -29,6 +29,6 @@ public class Ticket {
 
 	public Ticket(Integer seatNumber) {
 		this.seatNumber = seatNumber;
-		this.ticketNumber= UUID.randomUUID().toString();
+		this.ticketNumber = UUID.randomUUID().toString();
 	}
 }
