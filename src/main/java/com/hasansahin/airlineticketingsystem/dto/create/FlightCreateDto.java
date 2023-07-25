@@ -16,5 +16,6 @@ import java.util.Date;
 public class FlightCreateDto {
 	private Date departureDate;
 	private Date arrivalDate;
+	private Integer quota;
 	private Double price;
 }

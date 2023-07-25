@@ -21,6 +21,7 @@ public class Flight {
 	@Temporal(TemporalType.DATE)
 	private Date arrivalDate;
 	private Double price;
+	private Integer quota;
 	private String uuid;
 
 	@ManyToOne
