@@ -17,4 +17,9 @@ public class RouteController {
 	public ResponseEntity<RouteDto> save(@RequestBody RouteCreateDto routeCreateDto, @RequestParam String departureAirportIataCode, @RequestParam String arrivalAirportIataCode) {
 		return ResponseEntity.ok(routeService.save(routeCreateDto, departureAirportIataCode, arrivalAirportIataCode));
 	}
+
+	@GetMapping
+	public ResponseEntity<RouteDto> findByUuid(String routeUuid) {
+		return ResponseEntity.ok(routeService.findByUuid(routeUuid));
+	}
 }
