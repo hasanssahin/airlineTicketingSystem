@@ -29,6 +29,17 @@ public class FlightService {
 		return flightConverter.convertFlightToFlightDto(flightRepository.save(flight));
 	}
 
+	public void increaseQuota(String flightUuid, Integer quota) {
+		Flight flight = flightRepository.findByUuid(flightUuid);
+
+		if (quota > flight.getQuota() && quota >= flight.getQuota() * 1.10) {
+			flight.setPrice((flight.getPrice() * 10 / 100) + flight.getPrice());
+		}
+
+		flight.setQuota(quota);
+		flightRepository.save(flight);
+	}
+
 	public FlightDto findByUuid(String flightUuid) {
 		return flightConverter.convertFlightToFlightDto(flightRepository.findByUuid(flightUuid));
 	}
