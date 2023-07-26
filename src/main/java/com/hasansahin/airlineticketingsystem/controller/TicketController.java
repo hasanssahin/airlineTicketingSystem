@@ -14,8 +14,8 @@ public class TicketController {
 	private final TicketService ticketService;
 
 	@PostMapping
-	public ResponseEntity<TicketDto> save(@RequestBody TicketCreateDto ticketDto, @RequestParam String customerEmail, @RequestParam String flightUuid, @RequestParam String cvc) {
-		return ResponseEntity.ok(ticketService.save(ticketDto, customerEmail, flightUuid, cvc));
+	public ResponseEntity<TicketDto> save(@RequestBody TicketCreateDto ticketCreateDto, @RequestParam String customerEmail, @RequestParam String flightUuid, @RequestParam String cvc) {
+		return ResponseEntity.ok(ticketService.save(ticketCreateDto, customerEmail, flightUuid, cvc));
 	}
 
 	@GetMapping
