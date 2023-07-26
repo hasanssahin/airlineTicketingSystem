@@ -23,4 +23,9 @@ public class FlightController {
 		flightService.increaseQuota(flightUuid, quota);
 		return ResponseEntity.noContent().build();
 	}
+
+	@GetMapping
+	public ResponseEntity<FlightDto> findByUuid(String flightUuid) {
+		return ResponseEntity.ok(flightService.findByUuid(flightUuid));
+	}
 }
