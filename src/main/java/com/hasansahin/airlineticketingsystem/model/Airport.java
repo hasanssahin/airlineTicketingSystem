@@ -12,20 +12,14 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-public class Airport {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+public class Airport extends AirBaseInfo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String city;
 
-	private String name;
-	private String country;
-	private String city;
-	private String iataCode;
-
-	public Airport(String name, String country, String city, String iataCode) {
-		this.name = name;
-		this.country = country;
-		this.city = city;
-		this.iataCode = iataCode;
-	}
+    public Airport(String name, String country, String city, String iataCode) {
+        super(name, country, iataCode);
+        this.city = city;
+    }
 }
