@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CreditCardConverter {
-	public CreditCard convertCreditCardDtoToCreditCard(CreditCardDto creditCardDto) {
-		return new CreditCard(creditCardDto.getCreditCardNumber(), creditCardDto.getCvc());
-	}
+    public CreditCard convertCreditCardDtoToCreditCard(CreditCardDto creditCardDto) {
+        return new CreditCard(creditCardDto.getCreditCardNumber(), creditCardDto.getCvc());
+    }
 
-	public CreditCardDto convertCreditCardToCreditCartDto(CreditCard creditCard) {
-		return new CreditCardDto(creditCard.getCreditCardNumber(), creditCard.getCvc());
-	}
+    public CreditCardDto convertCreditCardToCreditCartDto(CreditCard creditCard) {
+        return new CreditCardDto(creditCard.getCreditCardNumber(), creditCard.getCvc());
+    }
 }

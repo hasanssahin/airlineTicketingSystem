@@ -10,6 +10,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RouteDto {
-	private String routeName;
-	private String uuid;
+    private String routeName;
+    private String uuid;
 }

@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/airlines")
 public class AirlineController {
-	private final AirlineService airlineService;
+    private final AirlineService airlineService;
 
-	@PostMapping
-	public ResponseEntity<AirlineDto> save(@RequestBody AirlineDto airlineDto) {
-		return ResponseEntity.ok(airlineService.save(airlineDto));
-	}
+    @PostMapping
+    public ResponseEntity<AirlineDto> save(@RequestBody AirlineDto airlineDto) {
+        return ResponseEntity.ok(airlineService.save(airlineDto));
+    }
 
-	@GetMapping
-	public ResponseEntity<AirlineDto> findByIataCode(String iataCode) {
-		return ResponseEntity.ok(airlineService.findByIataCode(iataCode));
-	}
+    @GetMapping
+    public ResponseEntity<AirlineDto> findByIataCode(String iataCode) {
+        return ResponseEntity.ok(airlineService.findByIataCode(iataCode));
+    }
 }

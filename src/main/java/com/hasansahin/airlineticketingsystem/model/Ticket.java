@@ -12,23 +12,23 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 public class Ticket {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private Integer seatNumber;
-	private String ticketNumber;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private Integer seatNumber;
+    private String ticketNumber;
 
-	@ManyToOne
-	private Customer customer;
+    @ManyToOne
+    private Customer customer;
 
-	@OneToOne
-	private Flight flight;
+    @OneToOne
+    private Flight flight;
 
-	@OneToOne
-	private CreditCard creditCard;
+    @OneToOne
+    private CreditCard creditCard;
 
-	public Ticket(Integer seatNumber) {
-		this.seatNumber = seatNumber;
-		this.ticketNumber = UUID.randomUUID().toString();
-	}
+    public Ticket(Integer seatNumber) {
+        this.seatNumber = seatNumber;
+        this.ticketNumber = UUID.randomUUID().toString();
+    }
 }

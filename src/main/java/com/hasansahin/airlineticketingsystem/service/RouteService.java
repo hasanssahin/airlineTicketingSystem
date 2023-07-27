@@ -4,7 +4,6 @@ import com.hasansahin.airlineticketingsystem.dto.RouteDto;
 import com.hasansahin.airlineticketingsystem.dto.converter.RouteConverter;
 import com.hasansahin.airlineticketingsystem.dto.create.RouteCreateDto;
 import com.hasansahin.airlineticketingsystem.model.Route;
-import com.hasansahin.airlineticketingsystem.repository.AirportRepository;
 import com.hasansahin.airlineticketingsystem.repository.RouteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

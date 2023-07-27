@@ -10,6 +10,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TicketDto {
-	private Integer seatNumber;
-	private String ticketNumber;
+    private Integer seatNumber;
+    private String ticketNumber;
 }

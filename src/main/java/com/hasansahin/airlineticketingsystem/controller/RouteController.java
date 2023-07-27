@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/routes")
 public class RouteController {
-	private final RouteService routeService;
+    private final RouteService routeService;
 
-	@PostMapping
-	public ResponseEntity<RouteDto> save(@RequestBody RouteCreateDto routeCreateDto, @RequestParam String departureAirportIataCode, @RequestParam String arrivalAirportIataCode) {
-		return ResponseEntity.ok(routeService.save(routeCreateDto, departureAirportIataCode, arrivalAirportIataCode));
-	}
+    @PostMapping
+    public ResponseEntity<RouteDto> save(@RequestBody RouteCreateDto routeCreateDto, @RequestParam String departureAirportIataCode, @RequestParam String arrivalAirportIataCode) {
+        return ResponseEntity.ok(routeService.save(routeCreateDto, departureAirportIataCode, arrivalAirportIataCode));
+    }
 
-	@GetMapping
-	public ResponseEntity<RouteDto> findByUuid(String routeUuid) {
-		return ResponseEntity.ok(routeService.findByUuid(routeUuid));
-	}
+    @GetMapping
+    public ResponseEntity<RouteDto> findByUuid(String routeUuid) {
+        return ResponseEntity.ok(routeService.findByUuid(routeUuid));
+    }
 }

@@ -12,7 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NotBlank
 public class CustomerDto {
-	private String name;
-	private String surname;
-	private String email;
+    private String name;
+    private String surname;
+    private String email;
 }

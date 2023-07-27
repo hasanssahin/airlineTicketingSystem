@@ -12,9 +12,9 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FlightDto {
-	private Date departureDate;
-	private Date arrivalDate;
-	private Double price;
-	private Integer quota;
-	private String uuid;
+    private Date departureDate;
+    private Date arrivalDate;
+    private Double price;
+    private Integer quota;
+    private String uuid;
 }

@@ -13,14 +13,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 public class CreditCard {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String creditCardNumber;
-	private String cvc;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String creditCardNumber;
+    private String cvc;
 
-	public CreditCard(String creditCardNumber, String cvc) {
-		this.creditCardNumber = creditCardNumber;
-		this.cvc = cvc;
-	}
+    public CreditCard(String creditCardNumber, String cvc) {
+        this.creditCardNumber = creditCardNumber;
+        this.cvc = cvc;
+    }
 }

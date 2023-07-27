@@ -12,8 +12,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NotBlank
 public class AirportDto {
-	private String name;
-	private String country;
-	private String city;
-	private String iataCode;
+    private String name;
+    private String country;
+    private String city;
+    private String iataCode;
 }

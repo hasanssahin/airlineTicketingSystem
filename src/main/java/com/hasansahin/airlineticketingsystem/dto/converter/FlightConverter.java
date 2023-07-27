@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class FlightConverter {
-	public Flight convertFlightCreateDtoToFlight(FlightCreateDto flightCreateDto) {
-		return new Flight(flightCreateDto.getDepartureDate(), flightCreateDto.getArrivalDate(), flightCreateDto.getPrice(), flightCreateDto.getQuota());
-	}
+    public Flight convertFlightCreateDtoToFlight(FlightCreateDto flightCreateDto) {
+        return new Flight(flightCreateDto.getDepartureDate(), flightCreateDto.getArrivalDate(), flightCreateDto.getPrice(), flightCreateDto.getQuota());
+    }
 
-	public FlightDto convertFlightToFlightDto(Flight flight) {
-		return new FlightDto(flight.getDepartureDate(), flight.getArrivalDate(), flight.getPrice(), flight.getQuota(), flight.getUuid());
-	}
+    public FlightDto convertFlightToFlightDto(Flight flight) {
+        return new FlightDto(flight.getDepartureDate(), flight.getArrivalDate(), flight.getPrice(), flight.getQuota(), flight.getUuid());
+    }
 }

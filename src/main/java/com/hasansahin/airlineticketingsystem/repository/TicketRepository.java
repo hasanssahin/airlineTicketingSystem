@@ -4,7 +4,7 @@ import com.hasansahin.airlineticketingsystem.model.Ticket;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TicketRepository extends JpaRepository<Ticket, Long> {
-	Ticket findByTicketNumber(String ticketNumber);
+    Ticket findByTicketNumber(String ticketNumber);
 
-	void deleteByTicketNumber(String ticketNumber);
+    void deleteByTicketNumber(String ticketNumber);
 }

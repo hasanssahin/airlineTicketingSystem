@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TicketConverter {
-	public Ticket convertTicketDtoToTicket(TicketCreateDto ticketCreateDto) {
-		return new Ticket(ticketCreateDto.getSeatNumber());
-	}
+    public Ticket convertTicketDtoToTicket(TicketCreateDto ticketCreateDto) {
+        return new Ticket(ticketCreateDto.getSeatNumber());
+    }
 
-	public TicketDto convertTicketToTicketDto(Ticket ticket) {
-		return new TicketDto(ticket.getSeatNumber(), ticket.getTicketNumber());
-	}
+    public TicketDto convertTicketToTicketDto(Ticket ticket) {
+        return new TicketDto(ticket.getSeatNumber(), ticket.getTicketNumber());
+    }
 }

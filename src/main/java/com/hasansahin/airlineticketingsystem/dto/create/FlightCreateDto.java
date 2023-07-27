@@ -14,8 +14,8 @@ import java.util.Date;
 @AllArgsConstructor
 @NotBlank
 public class FlightCreateDto {
-	private Date departureDate;
-	private Date arrivalDate;
-	private Integer quota;
-	private Double price;
+    private Date departureDate;
+    private Date arrivalDate;
+    private Integer quota;
+    private Double price;
 }

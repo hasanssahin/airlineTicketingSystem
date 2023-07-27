@@ -2,14 +2,11 @@ package com.hasansahin.airlineticketingsystem.service;
 
 import com.hasansahin.airlineticketingsystem.dto.FlightDto;
 import com.hasansahin.airlineticketingsystem.dto.converter.FlightConverter;
-import com.hasansahin.airlineticketingsystem.dto.converter.RouteConverter;
 import com.hasansahin.airlineticketingsystem.dto.create.FlightCreateDto;
 import com.hasansahin.airlineticketingsystem.model.Airline;
 import com.hasansahin.airlineticketingsystem.model.Flight;
 import com.hasansahin.airlineticketingsystem.model.Route;
-import com.hasansahin.airlineticketingsystem.repository.AirlineRepository;
 import com.hasansahin.airlineticketingsystem.repository.FlightRepository;
-import com.hasansahin.airlineticketingsystem.repository.RouteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

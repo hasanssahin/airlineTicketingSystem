@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/creditCards")
 public class CreditCardController {
-	private final CreditCardService creditCardService;
+    private final CreditCardService creditCardService;
 
-	@PostMapping
-	public ResponseEntity<CreditCardDto> save(@RequestBody CreditCardDto creditCardDto) {
-		return ResponseEntity.ok(creditCardService.save(creditCardDto));
-	}
+    @PostMapping
+    public ResponseEntity<CreditCardDto> save(@RequestBody CreditCardDto creditCardDto) {
+        return ResponseEntity.ok(creditCardService.save(creditCardDto));
+    }
 }

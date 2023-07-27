@@ -11,6 +11,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TicketCreateDto {
-	@NotBlank
-	private Integer seatNumber;
+    @NotBlank
+    private Integer seatNumber;
 }

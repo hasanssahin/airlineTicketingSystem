@@ -13,17 +13,17 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 public class Customer {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	private String name;
-	private String surname;
-	private String email;
+    private String name;
+    private String surname;
+    private String email;
 
-	public Customer(String name, String surname, String email) {
-		this.name = name;
-		this.surname = surname;
-		this.email = email;
-	}
+    public Customer(String name, String surname, String email) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+    }
 }

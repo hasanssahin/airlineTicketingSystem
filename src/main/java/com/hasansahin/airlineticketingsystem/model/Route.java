@@ -12,22 +12,22 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 public class Route {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String routeName;
-	private String uuid;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String routeName;
+    private String uuid;
 
-	@OneToOne
-	@JoinColumn(name = "departureAirportId")
-	private Airport departureAirport;
+    @OneToOne
+    @JoinColumn(name = "departureAirportId")
+    private Airport departureAirport;
 
-	@OneToOne
-	@JoinColumn(name = "arrivalAirportId")
-	private Airport arrivalAirport;
+    @OneToOne
+    @JoinColumn(name = "arrivalAirportId")
+    private Airport arrivalAirport;
 
-	public Route(String routeName) {
-		this.routeName = routeName;
-		this.uuid = UUID.randomUUID().toString();
-	}
+    public Route(String routeName) {
+        this.routeName = routeName;
+        this.uuid = UUID.randomUUID().toString();
+    }
 }

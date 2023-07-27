@@ -12,7 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NotBlank
 public class AirlineDto {
-	private String name;
-	private String country;
-	private String iataCode;
+    private String name;
+    private String country;
+    private String iataCode;
 }

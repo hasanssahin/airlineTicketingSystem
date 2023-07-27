@@ -11,6 +11,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RouteCreateDto {
-	@NotBlank
-	private String routeName;
+    @NotBlank
+    private String routeName;
 }

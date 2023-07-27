@@ -11,21 +11,21 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/tickets")
 public class TicketController {
-	private final TicketService ticketService;
+    private final TicketService ticketService;
 
-	@PostMapping
-	public ResponseEntity<TicketDto> save(@RequestBody TicketCreateDto ticketCreateDto, @RequestParam String customerEmail, @RequestParam String flightUuid, @RequestParam String cvc) {
-		return ResponseEntity.ok(ticketService.save(ticketCreateDto, customerEmail, flightUuid, cvc));
-	}
+    @PostMapping
+    public ResponseEntity<TicketDto> save(@RequestBody TicketCreateDto ticketCreateDto, @RequestParam String customerEmail, @RequestParam String flightUuid, @RequestParam String cvc) {
+        return ResponseEntity.ok(ticketService.save(ticketCreateDto, customerEmail, flightUuid, cvc));
+    }
 
-	@GetMapping
-	public ResponseEntity<TicketDto> find(@RequestParam String ticketNumber) {
-		return ResponseEntity.ok(ticketService.findTicketByUuid(ticketNumber));
-	}
+    @GetMapping
+    public ResponseEntity<TicketDto> find(@RequestParam String ticketNumber) {
+        return ResponseEntity.ok(ticketService.findTicketByUuid(ticketNumber));
+    }
 
-	@DeleteMapping
-	public ResponseEntity<Void> delete(@RequestParam String ticketNumber) {
-		ticketService.deleteTicketByTicketNumber(ticketNumber);
-		return ResponseEntity.noContent().build();
-	}
+    @DeleteMapping
+    public ResponseEntity<Void> delete(@RequestParam String ticketNumber) {
+        ticketService.deleteTicketByTicketNumber(ticketNumber);
+        return ResponseEntity.noContent().build();
+    }
 }

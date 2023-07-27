@@ -12,6 +12,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NotBlank
 public class CreditCardDto {
-	private String creditCardNumber;
-	private String cvc;
+    private String creditCardNumber;
+    private String cvc;
 }
