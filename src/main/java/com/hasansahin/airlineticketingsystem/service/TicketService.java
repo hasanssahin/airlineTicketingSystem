@@ -15,27 +15,27 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class TicketService {
-	private final TicketRepository ticketRepository;
-	private final CustomerRepository customerRepository;
-	private final FlightRepository flightRepository;
-	private final CreditCardRepository creditCardRepository;
-	private final TicketConverter ticketConverter;
+    private final TicketRepository ticketRepository;
+    private final TicketConverter ticketConverter;
+    private final CustomerService customerService;
+    private final FlightService flightService;
+    private final CreditCardService creditCardService;
 
-	public TicketDto save(TicketCreateDto ticketCreateDto, String customerEmail, String flightUuid, String cvc) {
-		Ticket ticket = ticketConverter.convertTicketDtoToTicket(ticketCreateDto);
-		ticket.setCustomer(customerRepository.findByEmail(customerEmail));
-		ticket.setFlight(flightRepository.findByUuid(flightUuid));
-		ticket.setCreditCard(creditCardRepository.findByCvc(cvc));
-		return ticketConverter.convertTicketToTicketDto(ticketRepository.save(ticket));
-	}
+    public TicketDto save(TicketCreateDto ticketCreateDto, String customerEmail, String flightUuid, String cvc) {
+        Ticket ticket = ticketConverter.convertTicketDtoToTicket(ticketCreateDto);
+        ticket.setCustomer(customerService.findByEmailProtected(customerEmail));
+        ticket.setFlight(flightService.findByUuidProtected(flightUuid));
+        ticket.setCreditCard(creditCardService.findByCvcProtected(cvc));
+        return ticketConverter.convertTicketToTicketDto(ticketRepository.save(ticket));
+    }
 
-	public TicketDto findTicketByUuid(String ticketNumber) {
-		return ticketConverter.convertTicketToTicketDto(ticketRepository.findByTicketNumber(ticketNumber));
-	}
+    public TicketDto findTicketByUuid(String ticketNumber) {
+        return ticketConverter.convertTicketToTicketDto(ticketRepository.findByTicketNumber(ticketNumber));
+    }
 
-	@Transactional
-	public void deleteTicketByTicketNumber(String ticketNumber) {
-		ticketRepository.deleteByTicketNumber(ticketNumber);
-	}
+    @Transactional
+    public void deleteTicketByTicketNumber(String ticketNumber) {
+        ticketRepository.deleteByTicketNumber(ticketNumber);
+    }
 
 }

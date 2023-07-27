@@ -10,11 +10,15 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class CustomerService {
-	private final CustomerRepository customerRepository;
-	private final CustomerConverter customerConverter;
+    private final CustomerRepository customerRepository;
+    private final CustomerConverter customerConverter;
 
-	public CustomerDto save(CustomerDto customerDto) {
-		Customer customer = customerConverter.convertCustomerDtoToCustomer(customerDto);
-		return customerConverter.convertCustomerToCustomerDto(customerRepository.save(customer));
-	}
+    public CustomerDto save(CustomerDto customerDto) {
+        Customer customer = customerConverter.convertCustomerDtoToCustomer(customerDto);
+        return customerConverter.convertCustomerToCustomerDto(customerRepository.save(customer));
+    }
+
+    protected Customer findByEmailProtected(String email) {
+        return customerRepository.findByEmail(email);
+    }
 }

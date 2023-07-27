@@ -13,32 +13,36 @@ import java.util.regex.Pattern;
 @Service
 @RequiredArgsConstructor
 public class CreditCardService {
-	private final CreditCardRepository creditCardRepository;
-	private final CreditCardConverter creditCardConverter;
+    private final CreditCardRepository creditCardRepository;
+    private final CreditCardConverter creditCardConverter;
 
-	public CreditCardDto save(CreditCardDto creditCardDto) {
-		CreditCard creditCard = creditCardConverter.convertCreditCardDtoToCreditCard(creditCardDto);
-		creditCard.setCreditCardNumber(editNumber(creditCard.getCreditCardNumber()));
-		creditCard.setCreditCardNumber(maskCreditCardNumber(creditCard.getCreditCardNumber()));
-		return creditCardConverter.convertCreditCardToCreditCartDto(creditCardRepository.save(creditCard));
-	}
+    public CreditCardDto save(CreditCardDto creditCardDto) {
+        CreditCard creditCard = creditCardConverter.convertCreditCardDtoToCreditCard(creditCardDto);
+        creditCard.setCreditCardNumber(editNumber(creditCard.getCreditCardNumber()));
+        creditCard.setCreditCardNumber(maskCreditCardNumber(creditCard.getCreditCardNumber()));
+        return creditCardConverter.convertCreditCardToCreditCartDto(creditCardRepository.save(creditCard));
+    }
 
-	private String editNumber(String creditCardNumber) {
-		String regex = "\\D";
-		Pattern pattern = Pattern.compile(regex);
-		Matcher matcher = pattern.matcher(creditCardNumber);
-		return matcher.replaceAll("");
-	}
+    private String editNumber(String creditCardNumber) {
+        String regex = "\\D";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(creditCardNumber);
+        return matcher.replaceAll("");
+    }
 
-	private String maskCreditCardNumber(String creditCardNumber) {
-		int visibleDigits = 6;
-		int totalDigits = creditCardNumber.length();
-		int maskedLength = totalDigits - (visibleDigits + 4);
+    private String maskCreditCardNumber(String creditCardNumber) {
+        int visibleDigits = 6;
+        int totalDigits = creditCardNumber.length();
+        int maskedLength = totalDigits - (visibleDigits + 4);
 
-		String maskedPortion = "*".repeat(maskedLength);
-		String visibleDigitsPart = creditCardNumber.substring(0, visibleDigits);
-		String lastFourDigits = creditCardNumber.substring(totalDigits - 4);
+        String maskedPortion = "*".repeat(maskedLength);
+        String visibleDigitsPart = creditCardNumber.substring(0, visibleDigits);
+        String lastFourDigits = creditCardNumber.substring(totalDigits - 4);
 
-		return visibleDigitsPart + maskedPortion + lastFourDigits;
-	}
+        return visibleDigitsPart + maskedPortion + lastFourDigits;
+    }
+
+    protected CreditCard findByCvcProtected(String cvc) {
+        return creditCardRepository.findByCvc(cvc);
+    }
 }

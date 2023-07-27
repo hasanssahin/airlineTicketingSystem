@@ -10,16 +10,21 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class AirlineService {
-	private final AirlineConverter airlineConverter;
-	private final AirlineRepository airlineRepository;
+    private final AirlineConverter airlineConverter;
+    private final AirlineRepository airlineRepository;
 
-	public AirlineDto save(AirlineDto airlineDto) {
-		Airline airline = airlineRepository.save(airlineConverter.convertAirlineDtoToAirline(airlineDto));
-		return airlineConverter.convertAirlineToAirlineDto(airline);
-	}
+    public AirlineDto save(AirlineDto airlineDto) {
+        Airline airline = airlineRepository.save(airlineConverter.convertAirlineDtoToAirline(airlineDto));
+        return airlineConverter.convertAirlineToAirlineDto(airline);
+    }
 
-	public AirlineDto findByIataCode(String iataCode) {
-		Airline airline = airlineRepository.findByIataCode(iataCode);
-		return airlineConverter.convertAirlineToAirlineDto(airline);
-	}
+    public AirlineDto findByIataCode(String iataCode) {
+        Airline airline = airlineRepository.findByIataCode(iataCode);
+        return airlineConverter.convertAirlineToAirlineDto(airline);
+    }
+
+    protected Airline findByIataCodeProtected(String iataCode) {
+        return airlineRepository.findByIataCode(iataCode);
+    }
+
 }

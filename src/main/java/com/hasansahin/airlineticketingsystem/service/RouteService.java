@@ -12,18 +12,22 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class RouteService {
-	private final RouteConverter routeConverter;
-	private final RouteRepository routeRepository;
-	private final AirportRepository airportRepository;
+    private final RouteConverter routeConverter;
+    private final RouteRepository routeRepository;
+    private final AirportService airportService;
 
-	public RouteDto save(RouteCreateDto routeCreateDto, String departureAirportIataCode, String arrivalAirportIataCode) {
-		Route route = routeConverter.convertRouteCreateDtoToRoute(routeCreateDto);
-		route.setDepartureAirport(airportRepository.findByIataCode(departureAirportIataCode));
-		route.setArrivalAirport(airportRepository.findByIataCode(arrivalAirportIataCode));
-		return routeConverter.convertRouteToRouteDto(routeRepository.save(route));
-	}
+    public RouteDto save(RouteCreateDto routeCreateDto, String departureAirportIataCode, String arrivalAirportIataCode) {
+        Route route = routeConverter.convertRouteCreateDtoToRoute(routeCreateDto);
+        route.setDepartureAirport(airportService.findByIataCodeProtected(departureAirportIataCode));
+        route.setArrivalAirport(airportService.findByIataCodeProtected(arrivalAirportIataCode));
+        return routeConverter.convertRouteToRouteDto(routeRepository.save(route));
+    }
 
-	public RouteDto findByUuid(String routeUuid) {
-		return routeConverter.convertRouteToRouteDto(routeRepository.findByUuid(routeUuid));
-	}
+    public RouteDto findByUuid(String routeUuid) {
+        return routeConverter.convertRouteToRouteDto(routeRepository.findByUuid(routeUuid));
+    }
+
+    protected Route findByUuidProtected(String routeUuid) {
+        return routeRepository.findByUuid(routeUuid);
+    }
 }
