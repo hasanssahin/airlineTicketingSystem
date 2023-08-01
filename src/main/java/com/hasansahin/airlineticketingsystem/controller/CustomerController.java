@@ -2,6 +2,7 @@ package com.hasansahin.airlineticketingsystem.controller;
 
 import com.hasansahin.airlineticketingsystem.dto.CustomerDto;
 import com.hasansahin.airlineticketingsystem.service.CustomerService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,7 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @PostMapping
-    public ResponseEntity<CustomerDto> save(@RequestBody CustomerDto customerDto) {
+    public ResponseEntity<CustomerDto> save(@RequestBody @Valid CustomerDto customerDto) {
         return ResponseEntity.ok(customerService.save(customerDto));
     }
 }
