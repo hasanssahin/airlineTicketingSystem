@@ -10,6 +10,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -43,7 +45,7 @@ class AirportServiceTest {
         Airport airport=new Airport("Airport Name 1","Airport Country 1","Airport City 1","1");
         AirportDto airportDto=new AirportDto("Airport Name 1","Airport Country 1","Airport City 1","1");
 
-        when(airportRepository.findByIataCode("1")).thenReturn(airport);
+        when(airportRepository.findByIataCode("1")).thenReturn(Optional.of(airport));
         when(airportConverter.convertAirportToAirportDto(airport)).thenReturn(airportDto);
 
         AirportDto resultAirportDto=airportService.findByIataCode("1");

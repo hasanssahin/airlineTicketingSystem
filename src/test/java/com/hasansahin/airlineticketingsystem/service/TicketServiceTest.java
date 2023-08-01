@@ -11,6 +11,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -51,7 +53,7 @@ class TicketServiceTest {
         TicketDto ticketDto=new TicketDto(3,"123");
 
         when(ticketConverter.convertTicketToTicketDto(ticket)).thenReturn(ticketDto);
-        when(ticketRepository.findByTicketNumber(ticketDto.getTicketNumber())).thenReturn(ticket);
+        when(ticketRepository.findByTicketNumber(ticketDto.getTicketNumber())).thenReturn(Optional.of(ticket));
 
         TicketDto resultTicketDto=ticketService.findTicketByUuid("123");
 

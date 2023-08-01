@@ -14,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Date;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -58,7 +59,7 @@ class FlightServiceTest {
         Flight flight=new Flight(new Date(),new Date(),1500.0,10);
         FlightDto flightDto=new FlightDto(new Date(),new Date(),1500.0,10,"123456789");
 
-        when(flightRepository.findByUuid(flightDto.getUuid())).thenReturn(flight);
+        when(flightRepository.findByUuid(flightDto.getUuid())).thenReturn(Optional.of(flight));
         when(flightRepository.save(flight)).thenReturn(flight);
 
         flightService.increaseQuota("123456789",20);

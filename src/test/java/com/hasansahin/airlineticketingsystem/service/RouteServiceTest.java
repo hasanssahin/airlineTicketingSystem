@@ -11,6 +11,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -48,7 +50,7 @@ class RouteServiceTest {
         Route route=new Route("Route Name 1");
         RouteDto routeDto=new RouteDto("Route Name 1","123456789");
 
-        when(routeRepository.findByUuid(routeDto.getUuid())).thenReturn(route);
+        when(routeRepository.findByUuid(routeDto.getUuid())).thenReturn(Optional.of(route));
         when(routeConverter.convertRouteToRouteDto(route)).thenReturn(routeDto);
 
         RouteDto resultRouteDto=routeService.findByUuid("123456789");
