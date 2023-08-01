@@ -21,11 +21,11 @@ public class AirportService {
     }
 
     public AirportDto findByIataCode(String iataCode) {
-        Airport airport = airportRepository.findByIataCode(iataCode).orElseThrow(()->new GenericException("Airport not found", HttpStatus.NOT_FOUND));
+        Airport airport = airportRepository.findByIataCode(iataCode).orElseThrow(() -> new GenericException("Airport not found", HttpStatus.NOT_FOUND));
         return airportConverter.convertAirportToAirportDto(airport);
     }
 
     protected Airport findByIataCodeProtected(String iataCode) {
-        return airportRepository.findByIataCode(iataCode).orElseThrow(()->new GenericException("Airport not found", HttpStatus.NOT_FOUND));
+        return airportRepository.findByIataCode(iataCode).orElseThrow(() -> new GenericException("Airport not found", HttpStatus.NOT_FOUND));
     }
 }

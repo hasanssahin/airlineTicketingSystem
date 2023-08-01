@@ -26,16 +26,16 @@ class CreditCardServiceTest {
     CreditCardService creditCardService;
 
     @Test
-    void save(){
-        CreditCard creditCard=new CreditCard("4221161122330005","123");
-        CreditCardDto creditCardDto=new CreditCardDto("4221161122330005","123");
+    void save() {
+        CreditCard creditCard = new CreditCard("4221161122330005", "123");
+        CreditCardDto creditCardDto = new CreditCardDto("4221161122330005", "123");
 
         when(creditCardRepository.save(creditCard)).thenReturn(creditCard);
         when(creditCardConverter.convertCreditCardToCreditCartDto(creditCard)).thenReturn(creditCardDto);
         when(creditCardConverter.convertCreditCardDtoToCreditCard(creditCardDto)).thenReturn(creditCard);
 
-        CreditCardDto resultCreditCardDto=creditCardService.save(creditCardDto);
+        CreditCardDto resultCreditCardDto = creditCardService.save(creditCardDto);
 
-        assertEquals(creditCardDto.getCvc(),resultCreditCardDto.getCvc());
+        assertEquals(creditCardDto.getCvc(), resultCreditCardDto.getCvc());
     }
 }

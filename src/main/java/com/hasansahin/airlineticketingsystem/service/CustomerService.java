@@ -21,6 +21,6 @@ public class CustomerService {
     }
 
     protected Customer findByEmailProtected(String email) {
-        return customerRepository.findByEmail(email).orElseThrow(()->new GenericException("Customer not found", HttpStatus.NOT_FOUND));
+        return customerRepository.findByEmail(email).orElseThrow(() -> new GenericException("Customer not found", HttpStatus.NOT_FOUND));
     }
 }

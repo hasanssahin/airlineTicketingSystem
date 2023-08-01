@@ -37,33 +37,33 @@ class FlightServiceTest {
     FlightService flightService;
 
     @Test
-    void save(){
-        AirlineDto airlineDto=new AirlineDto("Airline Name 1","Airline Country 1","1");
-        RouteDto routeDto=new RouteDto("Route Name 1","123456789");
+    void save() {
+        AirlineDto airlineDto = new AirlineDto("Airline Name 1", "Airline Country 1", "1");
+        RouteDto routeDto = new RouteDto("Route Name 1", "123456789");
 
-        Flight flight=new Flight(new Date(),new Date(),1500.0,10);
-        FlightCreateDto flightCreateDto=new FlightCreateDto(new Date(),new Date(),10,1500.0);
-        FlightDto flightDto=new FlightDto(new Date(),new Date(),1500.0,10,"123456789");
+        Flight flight = new Flight(new Date(), new Date(), 1500.0, 10);
+        FlightCreateDto flightCreateDto = new FlightCreateDto(new Date(), new Date(), 10, 1500.0);
+        FlightDto flightDto = new FlightDto(new Date(), new Date(), 1500.0, 10, "123456789");
 
         when(flightConverter.convertFlightCreateDtoToFlight(flightCreateDto)).thenReturn(flight);
         when(flightConverter.convertFlightToFlightDto(flight)).thenReturn(flightDto);
         when(flightRepository.save(flight)).thenReturn(flight);
 
-        FlightDto resultFlightDto=flightService.save(flightCreateDto,routeDto.getUuid(),airlineDto.getIataCode());
+        FlightDto resultFlightDto = flightService.save(flightCreateDto, routeDto.getUuid(), airlineDto.getIataCode());
 
-        assertEquals(flightDto.getUuid(),resultFlightDto.getUuid());
+        assertEquals(flightDto.getUuid(), resultFlightDto.getUuid());
     }
 
     @Test
-    void increaseQuota(){
-        Flight flight=new Flight(new Date(),new Date(),1500.0,10);
-        FlightDto flightDto=new FlightDto(new Date(),new Date(),1500.0,10,"123456789");
+    void increaseQuota() {
+        Flight flight = new Flight(new Date(), new Date(), 1500.0, 10);
+        FlightDto flightDto = new FlightDto(new Date(), new Date(), 1500.0, 10, "123456789");
 
         when(flightRepository.findByUuid(flightDto.getUuid())).thenReturn(Optional.of(flight));
         when(flightRepository.save(flight)).thenReturn(flight);
 
-        flightService.increaseQuota("123456789",20);
+        flightService.increaseQuota("123456789", 20);
 
-        assertEquals(20,flight.getQuota());
+        assertEquals(20, flight.getQuota());
     }
 }

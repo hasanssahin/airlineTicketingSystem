@@ -21,7 +21,7 @@ public class FlightService {
     private final RouteService routeService;
     private final AirlineService airlineService;
 
-    private static final String MESSAGE="Flight not found";
+    private static final String MESSAGE = "Flight not found";
 
     public FlightDto save(FlightCreateDto flightCreateDto, String routeUuid, String airlineIataCode) {
         Flight flight = flightConverter.convertFlightCreateDtoToFlight(flightCreateDto);
@@ -33,7 +33,7 @@ public class FlightService {
     }
 
     public void increaseQuota(String flightUuid, Integer quota) {
-        Flight flight = flightRepository.findByUuid(flightUuid).orElseThrow(()->new GenericException(MESSAGE, HttpStatus.NOT_FOUND));
+        Flight flight = flightRepository.findByUuid(flightUuid).orElseThrow(() -> new GenericException(MESSAGE, HttpStatus.NOT_FOUND));
 
         if (quota > flight.getQuota() && quota >= flight.getQuota() * 1.10) {
             flight.setPrice((flight.getPrice() * 10 / 100) + flight.getPrice());
@@ -44,10 +44,10 @@ public class FlightService {
     }
 
     public FlightDto findByUuid(String flightUuid) {
-        return flightConverter.convertFlightToFlightDto(flightRepository.findByUuid(flightUuid).orElseThrow(()->new GenericException(MESSAGE, HttpStatus.NOT_FOUND)));
+        return flightConverter.convertFlightToFlightDto(flightRepository.findByUuid(flightUuid).orElseThrow(() -> new GenericException(MESSAGE, HttpStatus.NOT_FOUND)));
     }
 
     protected Flight findByUuidProtected(String flightUuid) {
-        return flightRepository.findByUuid(flightUuid).orElseThrow(()->new GenericException(MESSAGE, HttpStatus.NOT_FOUND));
+        return flightRepository.findByUuid(flightUuid).orElseThrow(() -> new GenericException(MESSAGE, HttpStatus.NOT_FOUND));
     }
 }

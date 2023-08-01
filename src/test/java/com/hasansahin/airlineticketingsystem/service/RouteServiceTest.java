@@ -31,30 +31,30 @@ class RouteServiceTest {
     RouteService routeService;
 
     @Test
-    void save(){
-        Route route=new Route("Route Name 1");
-        RouteCreateDto routeCreateDto=new RouteCreateDto("Route Name 1");
-        RouteDto routeDto=new RouteDto("Route Name 1","123456789");
+    void save() {
+        Route route = new Route("Route Name 1");
+        RouteCreateDto routeCreateDto = new RouteCreateDto("Route Name 1");
+        RouteDto routeDto = new RouteDto("Route Name 1", "123456789");
 
         when(routeConverter.convertRouteCreateDtoToRoute(routeCreateDto)).thenReturn(route);
         when(routeRepository.save(route)).thenReturn(route);
         when(routeConverter.convertRouteToRouteDto(route)).thenReturn(routeDto);
 
-        RouteDto resultRouteDto=routeService.save(routeCreateDto,"1","2");
+        RouteDto resultRouteDto = routeService.save(routeCreateDto, "1", "2");
 
-        assertEquals(routeDto.getUuid(),resultRouteDto.getUuid());
+        assertEquals(routeDto.getUuid(), resultRouteDto.getUuid());
     }
 
     @Test
-    void findByUuid(){
-        Route route=new Route("Route Name 1");
-        RouteDto routeDto=new RouteDto("Route Name 1","123456789");
+    void findByUuid() {
+        Route route = new Route("Route Name 1");
+        RouteDto routeDto = new RouteDto("Route Name 1", "123456789");
 
         when(routeRepository.findByUuid(routeDto.getUuid())).thenReturn(Optional.of(route));
         when(routeConverter.convertRouteToRouteDto(route)).thenReturn(routeDto);
 
-        RouteDto resultRouteDto=routeService.findByUuid("123456789");
+        RouteDto resultRouteDto = routeService.findByUuid("123456789");
 
-        assertEquals(routeDto.getUuid(),resultRouteDto.getUuid());
+        assertEquals(routeDto.getUuid(), resultRouteDto.getUuid());
     }
 }

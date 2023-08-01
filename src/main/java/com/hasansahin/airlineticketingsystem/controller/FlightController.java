@@ -20,7 +20,7 @@ public class FlightController {
     }
 
     @PutMapping
-    public ResponseEntity<Void> increaseQuota(@RequestParam @Valid String flightUuid,@RequestParam @Valid Integer quota) {
+    public ResponseEntity<Void> increaseQuota(@RequestParam @Valid String flightUuid, @RequestParam @Valid Integer quota) {
         flightService.increaseQuota(flightUuid, quota);
         return ResponseEntity.noContent().build();
     }

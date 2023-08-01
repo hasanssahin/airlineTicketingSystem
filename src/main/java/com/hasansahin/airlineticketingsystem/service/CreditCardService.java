@@ -45,6 +45,6 @@ public class CreditCardService {
     }
 
     protected CreditCard findByCvcProtected(String cvc) {
-        return creditCardRepository.findByCvc(cvc).orElseThrow(()->new GenericException("Credit card not found", HttpStatus.NOT_FOUND));
+        return creditCardRepository.findByCvc(cvc).orElseThrow(() -> new GenericException("Credit card not found", HttpStatus.NOT_FOUND));
     }
 }

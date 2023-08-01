@@ -21,12 +21,12 @@ public class AirlineService {
     }
 
     public AirlineDto findByIataCode(String iataCode) {
-        Airline airline = airlineRepository.findByIataCode(iataCode).orElseThrow(()->new GenericException("Airline not found", HttpStatus.NOT_FOUND));
+        Airline airline = airlineRepository.findByIataCode(iataCode).orElseThrow(() -> new GenericException("Airline not found", HttpStatus.NOT_FOUND));
         return airlineConverter.convertAirlineToAirlineDto(airline);
     }
 
     protected Airline findByIataCodeProtected(String iataCode) {
-        return airlineRepository.findByIataCode(iataCode).orElseThrow(()->new GenericException("Airline not found", HttpStatus.NOT_FOUND));
+        return airlineRepository.findByIataCode(iataCode).orElseThrow(() -> new GenericException("Airline not found", HttpStatus.NOT_FOUND));
     }
 
 }

@@ -23,17 +23,18 @@ class CustomerServiceTest {
 
     @InjectMocks
     CustomerService customerService;
+
     @Test
-    void save(){
-        Customer customer=new Customer("Hasan","Şahin","hasansahin@test.com");
-        CustomerDto customerDto=new CustomerDto("Hasan","Şahin","hasansahin@test.com");
+    void save() {
+        Customer customer = new Customer("Hasan", "Şahin", "hasansahin@test.com");
+        CustomerDto customerDto = new CustomerDto("Hasan", "Şahin", "hasansahin@test.com");
 
         when(customerRepository.save(customer)).thenReturn(customer);
         when(customerConverter.convertCustomerDtoToCustomer(customerDto)).thenReturn(customer);
         when(customerConverter.convertCustomerToCustomerDto(customer)).thenReturn(customerDto);
 
-        CustomerDto resultCustomerDto=customerService.save(customerDto);
+        CustomerDto resultCustomerDto = customerService.save(customerDto);
 
-        assertEquals(customerDto.getEmail(),resultCustomerDto.getEmail());
+        assertEquals(customerDto.getEmail(), resultCustomerDto.getEmail());
     }
 }

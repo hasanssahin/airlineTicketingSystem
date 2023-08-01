@@ -25,10 +25,10 @@ public class RouteService {
     }
 
     public RouteDto findByUuid(String routeUuid) {
-        return routeConverter.convertRouteToRouteDto(routeRepository.findByUuid(routeUuid).orElseThrow(()->new GenericException("Route not found", HttpStatus.NOT_FOUND)));
+        return routeConverter.convertRouteToRouteDto(routeRepository.findByUuid(routeUuid).orElseThrow(() -> new GenericException("Route not found", HttpStatus.NOT_FOUND)));
     }
 
     protected Route findByUuidProtected(String routeUuid) {
-        return routeRepository.findByUuid(routeUuid).orElseThrow(()->new GenericException("Route not found", HttpStatus.NOT_FOUND));
+        return routeRepository.findByUuid(routeUuid).orElseThrow(() -> new GenericException("Route not found", HttpStatus.NOT_FOUND));
     }
 }

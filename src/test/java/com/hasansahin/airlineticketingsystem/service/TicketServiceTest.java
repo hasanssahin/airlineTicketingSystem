@@ -33,30 +33,30 @@ class TicketServiceTest {
 
 
     @Test
-    void save(){
-        TicketCreateDto ticketCreateDto=new TicketCreateDto(3);
-        Ticket ticket=new Ticket(3);
-        TicketDto ticketDto=new TicketDto(3,"123");
+    void save() {
+        TicketCreateDto ticketCreateDto = new TicketCreateDto(3);
+        Ticket ticket = new Ticket(3);
+        TicketDto ticketDto = new TicketDto(3, "123");
 
         when(ticketConverter.convertTicketDtoToTicket(ticketCreateDto)).thenReturn(ticket);
         when(ticketConverter.convertTicketToTicketDto(ticket)).thenReturn(ticketDto);
         when(ticketRepository.save(ticket)).thenReturn(ticket);
 
-        TicketDto resultTicketDto=ticketService.save(ticketCreateDto,"hasansahin@gmail.com","123456789","546");
+        TicketDto resultTicketDto = ticketService.save(ticketCreateDto, "hasansahin@gmail.com", "123456789", "546");
 
-        assertEquals(ticketDto.getTicketNumber(),resultTicketDto.getTicketNumber());
+        assertEquals(ticketDto.getTicketNumber(), resultTicketDto.getTicketNumber());
     }
 
     @Test
-    void findTicketByUuid(){
-        Ticket ticket=new Ticket(3);
-        TicketDto ticketDto=new TicketDto(3,"123");
+    void findTicketByUuid() {
+        Ticket ticket = new Ticket(3);
+        TicketDto ticketDto = new TicketDto(3, "123");
 
         when(ticketConverter.convertTicketToTicketDto(ticket)).thenReturn(ticketDto);
         when(ticketRepository.findByTicketNumber(ticketDto.getTicketNumber())).thenReturn(Optional.of(ticket));
 
-        TicketDto resultTicketDto=ticketService.findTicketByUuid("123");
+        TicketDto resultTicketDto = ticketService.findTicketByUuid("123");
 
-        assertEquals(ticketDto.getTicketNumber(),resultTicketDto.getTicketNumber());
+        assertEquals(ticketDto.getTicketNumber(), resultTicketDto.getTicketNumber());
     }
 }

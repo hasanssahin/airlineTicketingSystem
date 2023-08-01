@@ -29,7 +29,7 @@ public class TicketService {
     }
 
     public TicketDto findTicketByUuid(String ticketNumber) {
-        return ticketConverter.convertTicketToTicketDto(ticketRepository.findByTicketNumber(ticketNumber).orElseThrow(()->new GenericException("Ticket not found", HttpStatus.NOT_FOUND)));
+        return ticketConverter.convertTicketToTicketDto(ticketRepository.findByTicketNumber(ticketNumber).orElseThrow(() -> new GenericException("Ticket not found", HttpStatus.NOT_FOUND)));
     }
 
     @Transactional
