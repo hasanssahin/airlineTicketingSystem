@@ -2,9 +2,11 @@ package com.hasansahin.airlineticketingsystem.service;
 
 import com.hasansahin.airlineticketingsystem.dto.CreditCardDto;
 import com.hasansahin.airlineticketingsystem.dto.converter.CreditCardConverter;
+import com.hasansahin.airlineticketingsystem.exception.GenericException;
 import com.hasansahin.airlineticketingsystem.model.CreditCard;
 import com.hasansahin.airlineticketingsystem.repository.CreditCardRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.regex.Matcher;
@@ -43,6 +45,6 @@ public class CreditCardService {
     }
 
     protected CreditCard findByCvcProtected(String cvc) {
-        return creditCardRepository.findByCvc(cvc);
+        return creditCardRepository.findByCvc(cvc).orElseThrow(()->new GenericException("Credit card not found", HttpStatus.NOT_FOUND));
     }
 }

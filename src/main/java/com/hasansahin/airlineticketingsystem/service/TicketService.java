@@ -3,10 +3,12 @@ package com.hasansahin.airlineticketingsystem.service;
 import com.hasansahin.airlineticketingsystem.dto.TicketDto;
 import com.hasansahin.airlineticketingsystem.dto.converter.TicketConverter;
 import com.hasansahin.airlineticketingsystem.dto.create.TicketCreateDto;
+import com.hasansahin.airlineticketingsystem.exception.GenericException;
 import com.hasansahin.airlineticketingsystem.model.Ticket;
 import com.hasansahin.airlineticketingsystem.repository.TicketRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -27,7 +29,7 @@ public class TicketService {
     }
 
     public TicketDto findTicketByUuid(String ticketNumber) {
-        return ticketConverter.convertTicketToTicketDto(ticketRepository.findByTicketNumber(ticketNumber));
+        return ticketConverter.convertTicketToTicketDto(ticketRepository.findByTicketNumber(ticketNumber).orElseThrow(()->new GenericException("Ticket not found", HttpStatus.NOT_FOUND)));
     }
 
     @Transactional

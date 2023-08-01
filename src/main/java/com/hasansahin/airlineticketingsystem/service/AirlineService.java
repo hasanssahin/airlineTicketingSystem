@@ -2,9 +2,11 @@ package com.hasansahin.airlineticketingsystem.service;
 
 import com.hasansahin.airlineticketingsystem.dto.AirlineDto;
 import com.hasansahin.airlineticketingsystem.dto.converter.AirlineConverter;
+import com.hasansahin.airlineticketingsystem.exception.GenericException;
 import com.hasansahin.airlineticketingsystem.model.Airline;
 import com.hasansahin.airlineticketingsystem.repository.AirlineRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,12 +21,12 @@ public class AirlineService {
     }
 
     public AirlineDto findByIataCode(String iataCode) {
-        Airline airline = airlineRepository.findByIataCode(iataCode);
+        Airline airline = airlineRepository.findByIataCode(iataCode).orElseThrow(()->new GenericException("Airline not found", HttpStatus.NOT_FOUND));
         return airlineConverter.convertAirlineToAirlineDto(airline);
     }
 
     protected Airline findByIataCodeProtected(String iataCode) {
-        return airlineRepository.findByIataCode(iataCode);
+        return airlineRepository.findByIataCode(iataCode).orElseThrow(()->new GenericException("Airline not found", HttpStatus.NOT_FOUND));
     }
 
 }
